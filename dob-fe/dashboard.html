@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <button id="logout-button">Logout</button>
+        </div>
+        <h1>Admin Dashboard</h1>
+        <div class="navigation">
+            <ul>
+                <li><a href="users.html">Manage Users</a></li>
+                <li><a href="pasiens.html">Manage Patients</a></li>
+                <li><a href="rekam_medis.html">Manage Medical Records</a></li>
+            </ul>
+        </div>
+        <div id="dashboard-content">
+            <p>Selamat datang di dashboard admin!</p>
+
+            <!-- Menambahkan canvas untuk grafik pasien per hari -->
+            <div id="patient-chart-container">
+                <canvas id="patientChart" width="400" height="200"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/dashboard.cjs"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const logoutButton = document.getElementById('logout-button');
+            if (logoutButton) {
+                logoutButton.addEventListener('click', () => {
+                    // Implementasikan logika logout di sini (misalnya, hapus token dari localStorage)
+                    localStorage.removeItem('authToken');
+                    window.location.href = 'index.html';
+                });
+            }
+
+            // Implementasikan logika untuk memeriksa apakah pengguna sudah login
+            const authToken = localStorage.getItem('authToken');
+            if (!authToken) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Users</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="dashboard.html" style="text-decoration: none;">
+            <h1>Manage Users</h1>
+        </a>
+        <div id="add-user-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-button">&times;</span>
+                <h2>Add User</h2>
+                <form id="add-user-form">
+                    <div class="form-group">
+                        <label for="nama">Nama:</label>
+                        <input type="text" id="nama" name="nama" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="nomor_telepon">Nomor Telepon:</label>
+                        <input type="text" id="nomor_telepon" name="nomor_telepon">
+                    </div>
+                    <div class="form-group">
+                        <label for="role">Role:</label>
+                        <select id="role" name="role">
+                            <option value="admin">Admin</option>
+                            <option value="dokter">Dokter</option>
+                            <option value="perawat">Perawat</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" required>
+                    </div>
+                    <button type="submit">Save User</button>
+                    <div id="add-user-message" class="error-message"></div>
+                </form>
+            </div>
+        </div>
+
+        <table id="users-table">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Email</th>
+                    <th>Nomor Telepon</th>
+                    <th>Role</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="bottom-button">
+            <button id="add-user-button">Add New User</button>
+            <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+        </div>
+    </div>
+    <script src="js/script.cjs"></script>
+    <script src="js/users.cjs"></script>
+    <script>
+        // Implementasikan logika untuk memeriksa apakah pengguna sudah login
+        const authToken = localStorage.getItem('authToken');
+        if (!authToken) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
