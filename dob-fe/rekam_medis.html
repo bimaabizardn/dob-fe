@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manajemen Rekam Medis</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="dashboard.html" style="text-decoration: none;">
+            <h1>Manajemen Rekam Medis</h1>
+        </a>
+        <table id="medical-records-table">
+            <thead>
+                <tr>
+                    <th>Nama Pasien</th>
+                    <th>Tanggal</th>
+                    <th>Diagnosa</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data akan diisi melalui JavaScript -->
+            </tbody>
+        </table>
+        <div class="bottom-button">
+            <button id="add-record-button">Tambah Rekam Medis</button>
+            <button onclick="window.location.href='dashboard.html'">Kembali ke Dashboard</button>
+        </div>
+    </div>
+
+    <!-- Modal untuk Tambah Rekam Medis -->
+    <div id="add-record-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-add-modal">&times;</span>
+            <h2>Tambah Rekam Medis</h2>
+            <form id="add-record-form">
+                <div>
+                    <label for="add-nama-pasien">Nama Pasien:</label>
+                    <input type="text" id="add-nama-pasien" required>
+                </div>
+                <div>
+                    <label for="add-tanggal">Tanggal:</label>
+                    <input type="date" id="add-tanggal" required>
+                </div>
+                <div>
+                    <label for="add-diagnosa">Diagnosa:</label>
+                    <textarea id="add-diagnosa" required></textarea>
+                </div>
+                <button type="submit">Simpan</button>
+                <button type="button" id="close-add-modal-cancel">Batal</button>
+                <div id="add-record-error" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal untuk Edit Rekam Medis -->
+    <div id="edit-record-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-edit-modal">&times;</span>
+            <h2>Edit Rekam Medis</h2>
+            <form id="edit-record-form">
+                <div>
+                    <label for="edit-nama-pasien">Nama Pasien:</label>
+                    <input type="text" id="edit-nama-pasien" required>
+                </div>
+                <div>
+                    <label for="edit-tanggal">Tanggal:</label>
+                    <input type="date" id="edit-tanggal" required>
+                </div>
+                <div>
+                    <label for="edit-diagnosa">Diagnosa:</label>
+                    <textarea id="edit-diagnosa" required></textarea>
+                </div>
+                <button type="submit">Simpan</button>
+                <button type="button" id="close-edit-modal-cancel">Batal</button>
+                <div id="edit-record-error" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal untuk Delete Rekam Medis -->
+    <div id="delete-record-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-delete-modal">&times;</span>
+            <h2>Konfirmasi Hapus</h2>
+            <p>Apakah Anda yakin ingin menghapus rekam medis ini?</p>
+            <button id="confirm-delete-button">Hapus</button>
+            <button id="close-delete-modal-cancel">Batal</button>
+        </div>
+    </div>
+
+    <script src="js/script.cjs"></script>
+    <script src="js/rekam_medis.cjs"></script>
+    <script>
+        // Implementasikan logika untuk memeriksa apakah pengguna sudah login
+        document.addEventListener('DOMContentLoaded', function() {
+            const authToken = localStorage.getItem('authToken');
+            if (!authToken) {
+                window.location.href = 'index.html';
+            }
+        });
+    </script>
+</body>
+
+</html>

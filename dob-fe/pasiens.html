@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manage Patients</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="dashboard.html" style="text-decoration: none;">
+            <h1>Manage Patients</h1>
+        </a>
+        <table id="patients-table">
+            <thead>
+                <tr>
+                    <th>Nama</th>
+                    <th>Usia</th>
+                    <th>Jenis Kelamin</th>
+                    <th>Tanggal Masuk</th>
+                    <th>BB (kg)</th>
+                    <th>Gol. Darah</th>
+                    <th>TB (cm)</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+        <div class="bottom-button">
+        <button id="add-patient-button">Add New Patient</button>
+        <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+        </div>
+    </div>
+
+    <div id="add-patient-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-add-modal">&times;</span>
+            <h2>Tambah Pasien</h2>
+            <form id="add-patient-form">
+                <div>
+                    <label for="add-nama">Nama:</label>
+                    <input type="text" id="add-nama" required>
+                </div>
+                <div>
+                    <label for="add-usia">Usia:</label>
+                    <input type="number" id="add-usia" required>
+                </div>
+                <div>
+                    <label for="add-jenis-kelamin">Jenis Kelamin:</label>
+                    <select id="add-jenis-kelamin" required>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="add-tanggal-masuk">Tanggal Masuk:</label>
+                    <input type="date" id="add-tanggal-masuk">
+                </div>
+                <div>
+                    <label for="add-bb">Berat Badan (kg):</label>
+                    <input type="number" step="0.01" id="add-bb">
+                </div>
+                <div>
+                    <label for="add-gol-darah">Golongan Darah:</label>
+                    <input type="text" id="add-gol-darah">
+                </div>
+                <div>
+                    <label for="add-tb">Tinggi Badan (cm):</label>
+                    <input type="number" id="add-tb">
+                </div>
+                <button type="submit">Simpan</button>
+                <button type="button">Batal</button>
+                <div id="add-patient-error" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="edit-patient-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-edit-modal">&times;</span>
+            <h2>Edit Pasien</h2>
+            <form id="edit-patient-form">
+                <div>
+                    <label for="edit-nama">Nama:</label>
+                    <input type="text" id="edit-nama" required>
+                </div>
+                <div>
+                    <label for="edit-usia">Usia:</label>
+                    <input type="number" id="edit-usia" required>
+                </div>
+                <div>
+                    <label for="edit-jenis-kelamin">Jenis Kelamin:</label>
+                    <select id="edit-jenis-kelamin" required>
+                        <option value="Laki-laki">Laki-laki</option>
+                        <option value="Perempuan">Perempuan</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="edit-tanggal-masuk">Tanggal Masuk:</label>
+                    <input type="date" id="edit-tanggal-masuk">
+                </div>
+                <div>
+                    <label for="edit-bb">Berat Badan (kg):</label>
+                    <input type="number" step="0.01" id="edit-bb">
+                </div>
+                <div>
+                    <label for="edit-gol-darah">Golongan Darah:</label>
+                    <input type="text" id="edit-gol-darah">
+                </div>
+                <div>
+                    <label for="edit-tb">Tinggi Badan (cm):</label>
+                    <input type="number" id="edit-tb">
+                </div>
+                <button type="submit">Simpan</button>
+                <button type="button" id="close-edit-modal-cancel">Batal</button>
+                <div id="edit-patient-error" class="error-message"></div>
+            </form>
+        </div>
+    </div>
+
+    <div id="delete-patient-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button" id="close-delete-modal">&times;</span>
+            <h2>Konfirmasi Hapus</h2>
+            <p>Apakah Anda yakin ingin menghapus pasien ini?</p>
+            <button id="confirm-delete-button">Hapus</button>
+            <button id="close-delete-modal-cancel">Batal</button>
+        </div>
+    </div>
+
+    <script src="js/script.cjs"></script>
+    <script src="js/pasiens.cjs"></script>
+    <script>
+        // Implementasikan logika untuk memeriksa apakah pengguna sudah login
+        const authToken = localStorage.getItem('authToken');
+        if (!authToken) {
+            window.location.href = 'index.html';
+        }
+    </script>
+</body>
+
+</html>
